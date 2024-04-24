@@ -17,8 +17,8 @@ public class Building : MonoBehaviour
     public void Initialize(GameObject _target)
     {
         data.assetName = _target.gameObject.name;
-        data.Id = SaveData.GenerateId();
-            }
+        data.Id = SaveData.GeneratieId();
+    }
 
     public void Initialize(PlaceableObjectData _objectData)
     {
@@ -37,6 +37,11 @@ public class Building : MonoBehaviour
         return false;
     }
 
+    public void Load()
+    {
+        Place();
+    }
+
     public void Place()
     {
         Vector3Int positionInt = GridBuildingSystem.current.gridLayout.LocalToCell(transform.position);
@@ -49,6 +54,6 @@ public class Building : MonoBehaviour
     private void OnDisable()
     {
         data.position = transform.position;
-        //todo add to datas;
+        GameManager.current.saveData.AddData(data);
     }
 }

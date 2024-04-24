@@ -14,7 +14,7 @@ public class GridBuildingSystem : MonoBehaviour
     [SerializeField] private Tilemap TempTileMap;           // 배치가 되는 타일맵
     [SerializeField] private Tilemap MainTileMap;           // 배치를 확인하는 타일맵 
     [SerializeField] private List<TileBase> tiles = null;   //배치상태를 구분할 타일들
-    [SerializeField] private BuildUIList list = null;
+    //[SerializeField] private BuildUIList list = null;
 
     public static GridBuildingSystem current;
     //building 스크립트와 싱글턴 연결용
@@ -23,35 +23,15 @@ public class GridBuildingSystem : MonoBehaviour
     private Building temp = null; //Instantiate로 복사한 물체의 Building 스크립트를 받아옴
     //private Vector3 prevPos = Vector3.zero; 
     private BoundsInt prevArea ; // 그리드의 크기를 지정
-    public SaveData saveData; 
+    //public SaveData saveData; 
 
   
     private void Awake()
     {
         current = this;
 
-        SaveSystem.Initialize();
+        //SaveSystem.Initialize();
     }
-
-    // private void LoadPlaceableObjects()
-    // {
-    //     foreach(var plObjData in saveData.placeableObjectDatas.Values)
-    //     {
-    //         try
-    //         {
-    //             GameObject obj = current.InstanceBuilding();
-    //         }
-    //         catch(Exception e)
-    //         {
-
-    //         }
-    //     }
-    // }
-
-
-
-
-
     /// <summary>
     /// 인스펙터에서 지정한 타일들로 상태를 지정
     /// Dictionary에 지정된 타일을 넣어줌
@@ -131,11 +111,6 @@ public class GridBuildingSystem : MonoBehaviour
         }    
     }
 
-    // public void InitializeWithBuilding(GameObject building)
-    // {
-    //     temp = Instantiate(building, Vector3.zero, Quaternion.identity).GetComponent<Building>();
-    //     FollowBuilding();
-    // }
 
     /// <summary>
     /// 해당 구역에 대한 초기화
